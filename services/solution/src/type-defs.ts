@@ -1,20 +1,59 @@
 import { gql } from 'apollo-server-lambda';
 
 export const typeDefs = gql`
+  scalar Date
 
-  type Query {
-    hello: String
-    # getItems: [Item]
+  type Item {
+    id: ID!
+    userId: String
+    createdAt: Date
+    modelNumber: String
+    serialNumber: String
+    dateWarrantyBegins: Date
+    dateWarrantyExpires: Date
+    attachment: String
   }
 
-  # type Mutation {
-  #   addItem(
-  #     name: String
-  #   ): Item
-  # }
+  type Query {
+    # hello: String
 
-  # type Item {
-  #   id: ID!
-  #   name: String
-  # }
+    # listItems: [Item]
+
+    allItems(
+      id: String
+      serialNumber: String
+    ): [Item]
+    
+    getItem(
+      id: String
+      serialNumber: String
+    ): Item
+  }
+  
+  type Mutation {
+    createItem(
+      # userId: String
+      # createdAt: Date
+      # modelNumber: String
+      serialNumber: String
+      dateWarrantyBegins: Date
+      dateWarrantyExpires: Date
+      # attachment: String
+    ): Item
+
+    updateItem(
+      id: String!
+      # userId: String
+      # createdAt: Date
+      # modelNumber: String
+      serialNumber: String
+      dateWarrantyBegins: Date
+      dateWarrantyExpires: Date
+      attachment: String
+    ): Item
+    
+    deleteItem(
+      id: String!
+    ): Item
+  }
 `;

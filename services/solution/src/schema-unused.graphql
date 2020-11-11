@@ -1,0 +1,9 @@
+type Item {
+  userId: String
+  createdAt: Date
+  modelNumber: String
+  serialNumber: String
+  dateWarrantyBegins: Date
+  dateWarrantyExpires: Date
+  attachment: String
+}
